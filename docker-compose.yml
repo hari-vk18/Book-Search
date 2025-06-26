@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  library-db:
+    image: mysql:latest
+    container_name: library-db
+    environment:
+      MYSQL_ROOT_PASSWORD: Hari@0143
+      MYSQL_DATABASE: library
+    ports:
+      - "3307:3306"
+    volumes:
+      - library-data:/var/lib/mysql
+      - ./db/create_schema.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+
+volumes:
+  library-data:
